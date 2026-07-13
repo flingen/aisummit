@@ -1,4 +1,5 @@
 import { Linkedin, Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { VENUE_FULL } from '../../lib/event';
 
 const XIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -95,7 +96,7 @@ export function Footer() {
                 <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
                   <MapPin className="w-5 h-5" />
                 </div>
-                <span>The Zone, Gbagada, Lagos</span>
+                <span>{VENUE_FULL}</span>
               </div>
             </div>
 

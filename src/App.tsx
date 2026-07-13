@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { Hero } from './components/sections/Hero';
@@ -18,9 +19,10 @@ import { CTA } from './components/sections/CTA';
 import { FAQ } from './components/sections/FAQ';
 
 // Sub-pages are lazy-loaded so the home page bundle doesn't carry their code.
-// AdminPage in particular pulls in @supabase/supabase-js (~120 KB gzip) — splitting it out
-// is the single largest JS reduction we can make for the home-page LCP.
-const AdminPage = lazy(() => import('./pages/AdminPage').then((m) => ({ default: m.AdminPage })));
+// NOTE: the /admin route is intentionally removed — Supabase is disabled in
+// src/lib/supabase.ts, so the admin page would crash on load. Any hit to /admin
+// (or any other unknown path) now redirects to the homepage via the catch-all
+// route below. Re-add the route once Supabase is re-enabled.
 const SpeakersPage = lazy(() => import('./pages/SpeakersPage').then((m) => ({ default: m.SpeakersPage })));
 const AgendaPage = lazy(() => import('./pages/AgendaPage').then((m) => ({ default: m.AgendaPage })));
 
@@ -84,6 +86,7 @@ function HomePage() {
 
 function App() {
   return (
+    <ErrorBoundary>
     <BrowserRouter>
       <AnalyticsTracker />
       <Suspense fallback={<RouteFallback />}>
@@ -91,10 +94,12 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/speakers" element={<SpeakersPage />} />
           <Route path="/agenda" element={<AgendaPage />} />
-          <Route path="/admin" element={<AdminPage />} />
+          {/* Catch-all: broken links and unknown paths land on the homepage */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
+    </ErrorBoundary>
   );
 }
 

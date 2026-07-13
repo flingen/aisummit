@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { CalendarClock, Ticket, ArrowRight } from 'lucide-react';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
-
-const TICKET_URL = 'https://tix.africa/discover/nigeria-ai-summit';
+import { RegisterButton } from '../components/ui/RegisterButton';
+import { EVENT_DATE_MONO, VENUE_MONO } from '../lib/event';
 
 export function AgendaPage() {
   useEffect(() => {
@@ -25,8 +25,8 @@ export function AgendaPage() {
             Agenda <span className="gradient-text-green">Coming Soon</span>
           </h1>
           <p className="text-text-light text-lg mb-12">
-            One day, multiple stages, zero filler. The full schedule drops shortly. Grab your
-            ticket now so you are not scrambling later.
+            One day, multiple stages, zero filler. The full schedule drops shortly. Register
+            now so you are not scrambling later.
           </p>
 
           <div className="glass-card rounded-2xl p-8 sm:p-10">
@@ -34,18 +34,13 @@ export function AgendaPage() {
               <CalendarClock className="w-8 h-8 text-void" />
             </div>
             <p className="font-mono-label text-mist text-sm mb-8">
-              thursday, 10th september 2026 · 8:00 am wat · the zone, gbagada, lagos
+              {EVENT_DATE_MONO} · {VENUE_MONO}
             </p>
-            <a
-              href={TICKET_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base group"
-            >
+            <RegisterButton className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base group">
               <Ticket className="w-5 h-5" />
-              Get Your Ticket
+              Register for Event
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </RegisterButton>
           </div>
         </div>
       </main>

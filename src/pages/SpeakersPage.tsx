@@ -3,8 +3,8 @@ import { Mic2, ArrowRight, Sparkles } from 'lucide-react';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 
-const APPLY_TO_SPEAK_URL = 'https://forms.gle/ANkQJexAc7Bx3wWB7';
-const TICKET_URL = 'https://tix.africa/discover/nigeria-ai-summit';
+import { RegisterButton } from '../components/ui/RegisterButton';
+import { APPLY_TO_SPEAK_URL } from '../lib/event';
 
 export function SpeakersPage() {
   useEffect(() => {
@@ -27,7 +27,7 @@ export function SpeakersPage() {
           </h1>
           <p className="text-text-light text-lg mb-12">
             The lineup is being assembled and it will be worth the wait. Founders, engineers,
-            regulators and researchers shaping AI in Africa will take this stage on September 10.
+            regulators and researchers shaping AI in Africa will take this stage on July 30.
           </p>
 
           <div className="glass-card rounded-2xl p-8 sm:p-10">
@@ -52,14 +52,9 @@ export function SpeakersPage() {
                 Apply to Speak
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
-              <a
-                href={TICKET_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base"
-              >
-                Get Your Ticket
-              </a>
+              <RegisterButton className="btn-secondary inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base">
+                Register for Event
+              </RegisterButton>
             </div>
           </div>
         </div>

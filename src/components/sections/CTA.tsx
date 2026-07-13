@@ -1,8 +1,6 @@
 import { ArrowRight, Ticket, Handshake } from 'lucide-react';
-
-const TICKET_URL = 'https://tix.africa/discover/nigeria-ai-summit';
-const SPONSORSHIP_DECK_URL =
-  'https://drive.google.com/drive/folders/1piAb3McIIhbNl3cmNMs-CDDWDxQ4lDAy?usp=sharing';
+import { RegisterButton } from '../ui/RegisterButton';
+import { SPONSORSHIP_DECK_URL } from '../../lib/event';
 
 export function CTA() {
   return (
@@ -30,16 +28,11 @@ export function CTA() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href={TICKET_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary px-10 py-4 text-lg inline-flex items-center justify-center gap-2"
-          >
+          <RegisterButton className="btn-primary px-10 py-4 text-lg inline-flex items-center justify-center gap-2">
             <Ticket className="w-5 h-5" />
-            Get Your Ticket
+            Register for Event
             <ArrowRight size={18} />
-          </a>
+          </RegisterButton>
           <a
             href={SPONSORSHIP_DECK_URL}
             target="_blank"

@@ -7,7 +7,9 @@ interface TimeLeft {
   seconds: number;
 }
 
-const targetDate = new Date('2026-09-10T08:00:00+01:00');
+import { EVENT_DATE_ISO } from '../../lib/event';
+
+const targetDate = new Date(EVENT_DATE_ISO);
 
 export function Countdown() {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });

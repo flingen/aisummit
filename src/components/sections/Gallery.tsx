@@ -59,7 +59,7 @@ export function Gallery() {
             Scenes From Our Stages
           </h2>
           <p className="text-text-light text-lg max-w-3xl mx-auto">
-            Moments from past Africa Stablecoin Network events, all part of the same family. September 10 adds a new chapter.
+            Moments from past Africa Stablecoin Network events, all part of the same family. July 30 adds a new chapter.
           </p>
         </div>
 

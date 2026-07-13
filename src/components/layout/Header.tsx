@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Ticket, Sparkles } from 'lucide-react';
-
-const TICKET_URL = 'https://tix.africa/discover/nigeria-ai-summit';
+import { RegisterButton } from '../ui/RegisterButton';
 
 type NavLink =
   | { label: string; to: string; type: 'internal'; highlight?: boolean }
@@ -186,15 +185,10 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <a
-              href={TICKET_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary hidden sm:inline-flex items-center gap-2 px-5 py-2.5 text-sm"
-            >
+            <RegisterButton className="btn-primary hidden sm:inline-flex items-center gap-2 px-5 py-2.5 text-sm">
               <Ticket className="w-4 h-4" />
-              Get Your Ticket
-            </a>
+              Register for Event
+            </RegisterButton>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden p-2 text-white hover:text-purple-light transition-colors"
@@ -209,15 +203,10 @@ export function Header() {
           <div className="lg:hidden mt-4 pb-4 border-t border-white/10 pt-4">
             <nav className="flex flex-col gap-4">
               {navLinks.map(renderMobileLink)}
-              <a
-                href={TICKET_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary mt-2 w-full text-center py-3 sm:hidden inline-flex items-center justify-center gap-2"
-              >
+              <RegisterButton className="btn-primary mt-2 w-full text-center py-3 sm:hidden inline-flex items-center justify-center gap-2">
                 <Ticket className="w-4 h-4" />
-                Get Your Ticket
-              </a>
+                Register for Event
+              </RegisterButton>
             </nav>
           </div>
         )}

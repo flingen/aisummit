@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
 import { MapPin, Calendar, Clock, Ticket } from 'lucide-react';
-
-const TICKET_URL = 'https://tix.africa/discover/nigeria-ai-summit';
-const SPONSORSHIP_DECK_URL =
-  'https://drive.google.com/drive/folders/1piAb3McIIhbNl3cmNMs-CDDWDxQ4lDAy?usp=sharing';
-const BOOK_A_CALL_URL = 'https://calendly.com/nigeriastablecoinsummit/nss';
+import { RegisterButton } from '../ui/RegisterButton';
+import {
+  EVENT_DAY_LABEL,
+  EVENT_YEAR_LABEL,
+  EVENT_TIME_LABEL,
+  EVENT_TZ_LABEL,
+  VENUE_NAME,
+  VENUE_AREA,
+  VENUE_CITY,
+  SPONSORSHIP_DECK_URL,
+  BOOK_A_CALL_URL,
+} from '../../lib/event';
 
 // Each slide ships in two WebP widths (800w mobile, 1600w desktop) plus a JPG fallback.
 // Photos are from previous Africa Stablecoin Network events (same family of events).
@@ -136,37 +143,32 @@ export function Hero() {
           <div className="glass-card flex items-center gap-3 px-5 py-3 rounded-xl">
             <Calendar className="w-5 h-5 text-volt" />
             <div className="text-left">
-              <span className="block text-white font-bold text-sm sm:text-base">Thursday, 10th September</span>
-              <span className="text-mist text-xs sm:text-sm font-mono-label">2026</span>
+              <span className="block text-white font-bold text-sm sm:text-base">{EVENT_DAY_LABEL}</span>
+              <span className="text-mist text-xs sm:text-sm font-mono-label">{EVENT_YEAR_LABEL}</span>
             </div>
           </div>
           <div className="glass-card flex items-center gap-3 px-5 py-3 rounded-xl">
             <Clock className="w-5 h-5 text-signal" />
             <div className="text-left">
-              <span className="block text-white font-bold text-sm sm:text-base">8:00 AM</span>
-              <span className="text-mist text-xs sm:text-sm font-mono-label">WAT</span>
+              <span className="block text-white font-bold text-sm sm:text-base">{EVENT_TIME_LABEL}</span>
+              <span className="text-mist text-xs sm:text-sm font-mono-label">{EVENT_TZ_LABEL}</span>
             </div>
           </div>
           <div className="glass-card flex items-center gap-3 px-5 py-3 rounded-xl">
             <MapPin className="w-5 h-5 text-volt" />
             <div className="text-left">
-              <span className="block text-white font-bold text-sm sm:text-base">The Zone, Gbagada</span>
-              <span className="text-mist text-xs sm:text-sm font-mono-label">Lagos</span>
+              <span className="block text-white font-bold text-sm sm:text-base">{VENUE_NAME}, {VENUE_AREA}</span>
+              <span className="text-mist text-xs sm:text-sm font-mono-label">{VENUE_CITY}</span>
             </div>
           </div>
         </div>
 
         {/* CTAs */}
         <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-          <a
-            href={TICKET_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary px-10 py-4 text-lg inline-flex items-center justify-center gap-2"
-          >
+          <RegisterButton className="btn-primary px-10 py-4 text-lg inline-flex items-center justify-center gap-2">
             <Ticket className="w-5 h-5" />
-            Get Your Ticket
-          </a>
+            Register for Event
+          </RegisterButton>
           <a
             href={SPONSORSHIP_DECK_URL}
             target="_blank"

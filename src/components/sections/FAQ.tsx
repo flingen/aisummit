@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
 
-const VENUE_MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=The+Zone+Gbagada+Lagos';
+import { VENUE_MAPS_URL, VENUE_FULL } from '../../lib/event';
 
 const faqs = [
   {
@@ -17,13 +17,13 @@ const faqs = [
   },
   {
     question: 'Where is the venue?',
-    answer: 'The Zone, Gbagada, Lagos. Tap the question to open it on the map.',
-    link: { href: VENUE_MAPS_URL, label: 'Open The Zone, Gbagada on Google Maps' },
+    answer: `${VENUE_FULL}. Tap the question to open it on the map.`,
+    link: { href: VENUE_MAPS_URL, label: 'Open Oriental Hotel, Victoria Island on Google Maps' },
   },
   {
     question: 'How do I register?',
     answer:
-      'Grab your ticket via the Get Your Ticket button anywhere on this site. Seats are limited, do not wait for the last week.',
+      'Hit the Register for Event button anywhere on this site. Checkout opens right on the page via Luma. Seats are limited, do not wait for the last week.',
   },
   {
     question: 'Will there be opportunities for networking and partnerships?',
